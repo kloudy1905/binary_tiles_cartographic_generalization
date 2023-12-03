@@ -14,6 +14,7 @@ def generate_tiles(output_folder, input_file):
             for file in files:
                 if not file.endswith('.PNG'):
                     os.remove(os.path.join(root, file))
+
 def clean_folders(org_folder, gen_folder):
     list_dir = os.listdir(org_folder)
     for item in list_dir:
@@ -59,9 +60,9 @@ aprxMap.addDataFromPath(street_in)
 
 # Generalize
 print("Simplifying layers...")
-build_gen = arcpy.cartography.SimplifyBuilding(build_in, rf"{gdb_path}\buildings_simpl_10m", "10 Meters")
+build_gen = arcpy.cartography.SimplifyBuilding(build_in, rf"{gdb_path}\buildings_simpl_15m", "15 Meters")
 street_gen = arcpy.cartography.SimplifyLine(rf"{gdb_path}\streets", rf"{gdb_path}\streets_simpl",
-                                            "BEND_SIMPLIFY", "10 Meters")
+                                            "BEND_SIMPLIFY", "15 Meters")
 aprxMap.addDataFromPath(build_gen)
 aprxMap.addDataFromPath(street_gen)
 
